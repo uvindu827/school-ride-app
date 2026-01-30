@@ -28,9 +28,9 @@ A Flutter-based transportation management system for schools, featuring distinct
 ```bash
 git clone [https://github.com/uvindu827/school-ride-project.git](https://github.com/uvindu827/school-ride-project.git)
 cd school-ride-project
-
+```
 ## 📂 Project Structure
-
+```text
 lib/
 ├── core/
 │   ├── constants/      # App colors, strings, styles
@@ -39,4 +39,7 @@ lib/
 │   ├── auth/           # Login & Registration screens
 │   ├── driver/         # Driver-specific dashboard & features
 │   └── parent/         # Parent-specific dashboard & features
-└── main.dart           # App entry point
+└── main.dart           # App entry point ```
+
+
+
