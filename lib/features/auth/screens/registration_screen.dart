@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:school_ride/features/auth/screens/driver_home.dart';
+import 'package:school_ride/features/auth/screens/parent_home.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/services/auth_service.dart';
 
@@ -35,10 +37,20 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
     setState(() => _isLoading = false);
     
-    // Navigate to next screen (To be built later)
-    ScaffoldMessenger.of(context).showSnackBar(
-       SnackBar(content: Text("Welcome ${_selectedRole == 'PARENT' ? 'Parent' : 'Driver'}!")),
+    // Navigate to driver home
+    if (_selectedRole == 'DRIVER') {
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(builder: (context) => const DriverHomeScreen()),
+      (route) => false, // Clears the navigation stack so user can't go back to registration
     );
+  } else {
+    Navigator.pushAndRemoveUntil(
+    context,
+    MaterialPageRoute(builder: (context) => const ParentHomeScreen()),
+    (route) => false,
+  );
+  }
   }
 
   @override
@@ -140,7 +152,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       child: Container(
         height: 120,
         decoration: BoxDecoration(
-          color: isSelected ? AppColors.primary.withOpacity(0.1) : Colors.white,
+          color: isSelected ? AppColors.primary.withValues(alpha: 0.1) : Colors.white,
           border: Border.all(
             color: isSelected ? AppColors.primary : Colors.grey.shade300,
             width: 2,
